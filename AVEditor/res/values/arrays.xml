@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="left_drawer_item">
+        <item>Video</item>
+        <item>Audio</item>
+        <item>Image</item>
+        <item>Chroma Detection</item>
+        <item>Effects</item>
+        <item>Secure Vault</item>
+        <item>Premium Service</item>
+        <item>Credits</item>
+        <item>Setting</item>
+        <item>Help</item>
+        <item>About</item>
+    </string-array>
+
+</resources>
