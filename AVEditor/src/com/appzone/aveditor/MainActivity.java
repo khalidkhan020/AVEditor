@@ -31,38 +31,39 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity implements
-		NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks
+{
 
-	private NavigationDrawerFragment mNavigationDrawerFragment;
-	private CharSequence mTitle;
-	String[] title_array;
+	private NavigationDrawerFragment	mNavigationDrawerFragment;
+	
+	String[]							title_array;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
+		title_array = getResources().getStringArray(R.array.left_drawer_item);
 		setContentView(R.layout.activity_main);
 
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
-				.findFragmentById(R.id.navigation_drawer);
-		mTitle = getTitle();
-
-		// Set up the drawer.
-		title_array = getResources().getStringArray(R.array.left_drawer_item);
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
-				(DrawerLayout) findViewById(R.id.drawer_layout));
+		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+		
+		
+		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 
 	@Override
-	public void onNavigationDrawerItemSelected(int position) {
+	public void onNavigationDrawerItemSelected(int position)
+	{
 
 		replacefragement(position);
-
+	
 	}
 
-	void replacefragement(int position) {
+	void replacefragement(int position)
+	{
 		Fragment fragment = null;
-		switch (position) {
+		switch (position)
+		{
 		case 0:
 			fragment = new VideoFragment();
 
@@ -111,41 +112,38 @@ public class MainActivity extends ActionBarActivity implements
 		default:
 			break;
 		}
-		if (fragment != null) {
+		if (fragment != null)
+		{
 			FragmentManager fragmentManager = getSupportFragmentManager();
-			fragmentManager.beginTransaction()
-					.replace(R.id.container, fragment).commit();
+			fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
 
-			restoreActionBar();
-			//onSectionAttached(position);
+		//	restoreActionBar();
+			ActionBar actionBar=getSupportActionBar();
+			actionBar.setTitle(title_array[position]);
+			
 		}
 	}
 
-	public void onSectionAttached(int number) {
-		mTitle = title_array[number - 1];
-	}
-
-	public void restoreActionBar() {
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle(mTitle);
-	}
-
-	 @Override
 	
-	  public boolean onCreateOptionsMenu(Menu menu) { if
-	  (!mNavigationDrawerFragment.isDrawerOpen()) {
-	  
-	  getMenuInflater().inflate(R.menu.main, menu); //restoreActionBar();
-	  return true; } return super.onCreateOptionsMenu(menu); }
-	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		if (!mNavigationDrawerFragment.isDrawerOpen())
+		{
+
+			getMenuInflater().inflate(R.menu.main, menu); // restoreActionBar();
+			return true;
+		}
+		return super.onCreateOptionsMenu(menu);
+	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 
 		int id = item.getItemId();
-		switch (id) {
+		switch (id)
+		{
 		case R.id.action_share:
 			Intent sendIntent = new Intent();
 			sendIntent.setAction(Intent.ACTION_SEND);
