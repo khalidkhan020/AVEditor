@@ -1,5 +1,15 @@
 package com.appzone.aveditor;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.appzone.aveditor.fragements.AudioFragment;
 import com.appzone.aveditor.fragements.SettingFragment;
 import com.appzone.aveditor.fragements.VideoFragment;
@@ -11,31 +21,14 @@ import com.appzone.aveditor.fragements.helpFragment;
 import com.appzone.aveditor.fragements.imageFragment;
 import com.appzone.aveditor.fragements.premiumserviceFragment;
 import com.appzone.aveditor.fragements.securevaultFragment;
-
-import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks
 {
 
 	private NavigationDrawerFragment	mNavigationDrawerFragment;
-	
+	private AdView	mAdView;
 	String[]							title_array;
 
 	@Override
@@ -44,21 +37,47 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		super.onCreate(savedInstanceState);
 		title_array = getResources().getStringArray(R.array.left_drawer_item);
 		setContentView(R.layout.activity_main);
-
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-		
-		
+		mAdView = (AdView) findViewById(R.id.ad_view);
+		AdRequest adRequest = new AdRequest.Builder().build();
+		mAdView.loadAd(adRequest);
+		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);		
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position)
 	{
-
 		replacefragement(position);
-	
+	}
+	@Override
+	public void onPause()
+	{
+		if (mAdView != null)
+		{
+			mAdView.pause();
+		}
+		super.onPause();
 	}
 
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		if (mAdView != null)
+		{
+			mAdView.resume();
+		}
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		if (mAdView != null)
+		{
+			mAdView.destroy();
+		}
+		super.onDestroy();
+	}
 	void replacefragement(int position)
 	{
 		Fragment fragment = null;
