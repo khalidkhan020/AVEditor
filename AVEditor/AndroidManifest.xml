@@ -10,18 +10,22 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
 
     <application
+        android:name="com.appzone.aveditor.App"
         android:allowBackup="true"
-        
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:name="com.appzone.aveditor.App"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
+        
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -32,10 +36,56 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+       
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
+        //////////////////////////////////////////////////////////////
+        <activity
+            android:name="com.studio.MainActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- android:theme="@style/Theme.Sherlock.Light" -->
+        <activity android:name="com.studio.DialogFragment" >
+        </activity>
+        <activity
+            android:name="com.studio.ImageDetails"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.studio.MediaPlaybackActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.studio.AddAudio"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <!-- android:theme="@android:style/Theme.Light.NoTitleBar" -->
+
+        <activity
+            android:name="com.studio.utils.ViewVideo"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.studio.ExtractDetails"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="com.studio.ExtractVideoDetails"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
+        </activity>
+
+        <!-- android:theme="@android:style/Theme.Holo.Dialog" -->
+
+        <activity
+            android:name="com.studio.TrialVideoActivity"
+            android:screenOrientation="landscape" >
+        </activity>
     </application>
 
 </manifest>

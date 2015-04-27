@@ -30,19 +30,23 @@ import com.appzone.aveditor.R;
 import com.studio.ffmpeg.FfmpegJob;
 import com.studio.utils.ViewVideo;
 
-public class DialogFragment extends Activity {
+public class DialogFragment extends Activity
+{
 
-	final String trimst = Environment.getExternalStorageDirectory().getPath()
-			+ "/" + "Android_Studio/Trimmed_Videos";
-	private String mFfmpegInstallPath;
-	AsyncTask<Void, Void, Void> Mysynextractaudio = null;
+	final String				trimst				= Environment.getExternalStorageDirectory().getPath()
+															+ "/" + "Android_Studio/Trimmed_Videos";
+	private String				mFfmpegInstallPath;
+	AsyncTask<Void, Void, Void>	Mysynextractaudio	= null;
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
 		// TODO Auto-generated method stub
 
-		if (requestCode == 9) {
-			if (data != null) {
+		if (requestCode == 9)
+		{
+			if (data != null)
+			{
 				final String destfilename = data.getExtras().getString(
 						"outputFileName");
 				String trimfilename = data.getExtras().getString(
@@ -58,22 +62,30 @@ public class DialogFragment extends Activity {
 				final ProgressDialog progressDialog = ProgressDialog.show(
 						DialogFragment.this, "Extracting Audio", "Please wait it may take some time depending on audio size", true);
 
-				Mysynextractaudio =	new AsyncTask<Void, Void, Void>() {
-					
+				Mysynextractaudio = new AsyncTask<Void, Void, Void>()
+				{
+
 					@Override
-					protected void onPreExecute() {
-						progressDialog.setOnKeyListener(new OnKeyListener() {
+					protected void onPreExecute()
+					{
+						progressDialog.setOnKeyListener(new OnKeyListener()
+						{
 
 							@Override
 							public boolean onKey(DialogInterface dialog,
-									int keyCode, KeyEvent event) {
+									int keyCode, KeyEvent event)
+							{
 								// TODO Auto-generated method stub
-								if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-									if (event.getAction() != KeyEvent.ACTION_DOWN) {
-//										showalert(progressDialog);
+								if ((keyCode == KeyEvent.KEYCODE_BACK))
+								{
+									if (event.getAction() != KeyEvent.ACTION_DOWN)
+									{
+										// showalert(progressDialog);
 									}
 									return true;
-								} else {
+								}
+								else
+								{
 									return false;
 								}
 							}
@@ -81,19 +93,22 @@ public class DialogFragment extends Activity {
 					};
 
 					@Override
-					protected Void doInBackground(Void... arg0) {
+					protected Void doInBackground(Void... arg0)
+					{
 						job.trimvideos().run();
 						return null;
 					}
 
 					@Override
-					protected void onProgressUpdate(Void... values) {
+					protected void onProgressUpdate(Void... values)
+					{
 						// TODO Auto-generated method stub
 						super.onProgressUpdate(values);
 					}
 
 					@Override
-					protected void onPostExecute(Void result) {
+					protected void onPostExecute(Void result)
+					{
 						progressDialog.dismiss();
 						Toast.makeText(DialogFragment.this,
 								"Audio Trimmed succcessfully",
@@ -108,11 +123,13 @@ public class DialogFragment extends Activity {
 										"File Save To /sdcard/Android_Studio Folder. Want to Play Song")
 								.setCancelable(false)
 								.setPositiveButton("PLAY",
-										new DialogInterface.OnClickListener() {
+										new DialogInterface.OnClickListener()
+										{
 											@Override
 											public void onClick(
 													DialogInterface dialog,
-													int which) {
+													int which)
+											{
 												// TODO Auto-generated
 												// method stub
 												Intent intent = new Intent();
@@ -128,11 +145,13 @@ public class DialogFragment extends Activity {
 											}
 										})
 								.setNegativeButton("Cancel",
-										new DialogInterface.OnClickListener() {
+										new DialogInterface.OnClickListener()
+										{
 											@Override
 											public void onClick(
 													DialogInterface dialog,
-													int which) {
+													int which)
+											{
 												// TODO Auto-generated
 												// method stub
 												dialog.dismiss();
@@ -149,27 +168,28 @@ public class DialogFragment extends Activity {
 		}
 	}
 
-	final String rootpath = Environment.getExternalStorageDirectory().getPath()
-			+ "/" + "";
-	File sel = null;
-	private Item[] fileList;
+	final String				rootpath			= Environment.getExternalStorageDirectory().getPath()
+															+ "/" + "";
+	File						sel					= null;
+	private Item[]				fileList;
 
-	private String chosenFile;
+	private String				chosenFile;
 
-	private Boolean firstLvl = true;
+	private Boolean				firstLvl			= true;
 
-	ArrayList<String> str = new ArrayList<String>();
-	String filename;
-	private static final int DIALOG_LOAD_FILE = 1000;
-	private static final int DIALOG_LOAD_FOLDER = 1001;
-	ListAdapter adapter;
-	int flag1 = 1;
+	ArrayList<String>			str					= new ArrayList<String>();
+	String						filename;
+	private static final int	DIALOG_LOAD_FILE	= 1000;
+	private static final int	DIALOG_LOAD_FOLDER	= 1001;
+	ListAdapter					adapter;
+	int							flag1				= 1;
 
-	private static final String TAG = "MainActivity";
-	private File path = new File(Environment.getExternalStorageDirectory() + "");
+	private static final String	TAG					= "MainActivity";
+	private File				path				= new File(Environment.getExternalStorageDirectory() + "");
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
@@ -179,19 +199,26 @@ public class DialogFragment extends Activity {
 		showDialog(DIALOG_LOAD_FILE);
 	}
 
-	private void loadFileList() {
-		try {
+	private void loadFileList()
+	{
+		try
+		{
 			path.mkdirs();
-		} catch (SecurityException e) {
+		}
+		catch (SecurityException e)
+		{
 			Log.e(TAG, "unable to write on the sd card ");
 		}
 
 		// Checks whether path exists
-		if (path.exists()) {
+		if (path.exists())
+		{
 
-			FilenameFilter filter = new FilenameFilter() {
+			FilenameFilter filter = new FilenameFilter()
+			{
 				@Override
-				public boolean accept(File dir, String filename) {
+				public boolean accept(File dir, String filename)
+				{
 					sel = new File(dir, filename);
 					// Filters based on whether the file is hidden or not
 					return ((sel.isFile() && (filename.endsWith(".m4a")
@@ -209,39 +236,49 @@ public class DialogFragment extends Activity {
 			};
 			String[] fList = path.list(filter);
 			fileList = new Item[fList.length];
-			for (int i = 0; i < fList.length; i++) {
+			for (int i = 0; i < fList.length; i++)
+			{
 				fileList[i] = new Item(fList[i], R.drawable.music);
 
 				// Convert into file path
 				File sel = new File(path, fList[i]);
 
 				// Set drawables
-				if (sel.isDirectory()) {
+				if (sel.isDirectory())
+				{
 					fileList[i].icon = R.drawable.folder;
 					Log.d("DIRECTORY", fileList[i].file);
-				} else {
+				}
+				else
+				{
 					Log.d("FILE", fileList[i].file);
 				}
 			}
 
-			if (!firstLvl) {
+			if (!firstLvl)
+			{
 				Item temp[] = new Item[fileList.length + 1];
-				for (int i = 0; i < fileList.length; i++) {
+				for (int i = 0; i < fileList.length; i++)
+				{
 					temp[i + 1] = fileList[i];
 				}
 				temp[0] = new Item("Up", R.drawable.directory_up);
 				fileList = temp;
 			}
-		} else {
+		}
+		else
+		{
 			Log.e(TAG, "path does not exist");
 		}
 
 		adapter = new ArrayAdapter<Item>(this,
 				android.R.layout.select_dialog_item, android.R.id.text1,
-				fileList) {
+				fileList)
+		{
 
 			@Override
-			public View getView(int position, View convertView, ViewGroup parent) {
+			public View getView(int position, View convertView, ViewGroup parent)
+			{
 				// creates view
 				View view = super.getView(position, convertView, parent);
 				view.setMinimumHeight(50);
@@ -261,96 +298,108 @@ public class DialogFragment extends Activity {
 	}
 
 	@Override
-	protected Dialog onCreateDialog(int id) {
+	protected Dialog onCreateDialog(int id)
+	{
 		Dialog dialog = null;
 
 		AlertDialog.Builder builder = new Builder(this);
 		dialog = builder.create();
-		if (fileList == null) {
+		if (fileList == null)
+		{
 			Log.e(TAG, "No files loaded");
 			dialog = builder.create();
 			return dialog;
 		}
 
-		switch (id) {
-		case DIALOG_LOAD_FILE:
-			builder.setTitle(R.string.selectfile);
-			builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					chosenFile = fileList[which].file;
-					sel = new File(path + "/" + chosenFile);
-					if (sel.isDirectory()) {
-						firstLvl = false;
-						// Adds chosen directory to list
-						str.add(chosenFile);
-						fileList = null;
-						path = new File(sel + "");
-						loadFileList();
-						removeDialog(DIALOG_LOAD_FILE);
-						showDialog(DIALOG_LOAD_FILE);
-						Log.d(TAG, path.getAbsolutePath());
+		switch (id)
+		{
+			case DIALOG_LOAD_FILE:
+				builder.setTitle(R.string.selectfile);
+				builder.setAdapter(adapter, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						chosenFile = fileList[which].file;
+						sel = new File(path + "/" + chosenFile);
+						if (sel.isDirectory())
+						{
+							firstLvl = false;
+							// Adds chosen directory to list
+							str.add(chosenFile);
+							fileList = null;
+							path = new File(sel + "");
+							loadFileList();
+							removeDialog(DIALOG_LOAD_FILE);
+							showDialog(DIALOG_LOAD_FILE);
+							Log.d(TAG, path.getAbsolutePath());
 
-					}
-
-					// Checks if 'up' was clicked
-					else if (chosenFile.equalsIgnoreCase("up") && !sel.exists()) {
-
-						// present directory removed from list
-						String s = str.remove(str.size() - 1);
-
-						// path modified to exclude present directory
-						path = new File(path.toString().substring(0,
-								path.toString().lastIndexOf(s)));
-						fileList = null;
-
-						// if there are no more directories in the list, then
-						// its the first level
-						if (str.isEmpty()) {
-							firstLvl = true;
 						}
-						loadFileList();
-						removeDialog(DIALOG_LOAD_FILE);
-						showDialog(DIALOG_LOAD_FILE);
-						Log.d(TAG, path.getAbsolutePath());
+
+						// Checks if 'up' was clicked
+						else if (chosenFile.equalsIgnoreCase("up") && !sel.exists())
+						{
+
+							// present directory removed from list
+							String s = str.remove(str.size() - 1);
+
+							// path modified to exclude present directory
+							path = new File(path.toString().substring(0,
+									path.toString().lastIndexOf(s)));
+							fileList = null;
+
+							// if there are no more directories in the list,
+							// then
+							// its the first level
+							if (str.isEmpty())
+							{
+								firstLvl = true;
+							}
+							loadFileList();
+							removeDialog(DIALOG_LOAD_FILE);
+							showDialog(DIALOG_LOAD_FILE);
+							Log.d(TAG, path.getAbsolutePath());
+
+						}
+						// File picked
+						else
+						{
+
+							Intent trimintent = new Intent(DialogFragment.this,
+									ViewVideo.class);
+							trimintent.putExtra("trimfile", sel.toString());
+							startActivityForResult(trimintent, 9);
+							// String type = null;
+							// String extension = MimeTypeMap
+							// .getFileExtensionFromUrl(sel.toString());
+							// if (extension != null) {
+							// MimeTypeMap mime = MimeTypeMap.getSingleton();
+							// type = mime.getMimeTypeFromExtension(extension);
+							// Intent intent = new Intent();
+							// intent.setAction(android.content.Intent.ACTION_VIEW);
+							// File file = new File(sel.toString());
+							// intent.setDataAndType(Uri.fromFile(file), type);
+							// startActivity(intent);
+							// }
+
+							// Perform action with file picked
+							// mInputFilepath.setText(sel.toString());
+
+						}
 
 					}
-					// File picked
-					else {
+				});
 
-						Intent trimintent = new Intent(DialogFragment.this,
-								ViewVideo.class);
-						trimintent.putExtra("trimfile", sel.toString());
-						startActivityForResult(trimintent, 9);
-						// String type = null;
-						// String extension = MimeTypeMap
-						// .getFileExtensionFromUrl(sel.toString());
-						// if (extension != null) {
-						// MimeTypeMap mime = MimeTypeMap.getSingleton();
-						// type = mime.getMimeTypeFromExtension(extension);
-						// Intent intent = new Intent();
-						// intent.setAction(android.content.Intent.ACTION_VIEW);
-						// File file = new File(sel.toString());
-						// intent.setDataAndType(Uri.fromFile(file), type);
-						// startActivity(intent);
-						// }
-
-						// Perform action with file picked
-						// mInputFilepath.setText(sel.toString());
-
-					}
-
-				}
-			});
-
-			break;
+				break;
 
 		}
 		dialog = builder.show();
-		dialog.setOnCancelListener(new OnCancelListener() {
+		dialog.setOnCancelListener(new OnCancelListener()
+		{
 
 			@Override
-			public void onCancel(DialogInterface dialog) {
+			public void onCancel(DialogInterface dialog)
+			{
 				// TODO Auto-generated method stub
 				DialogFragment.this.finish();
 			}
