@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ExtractVideoDetails" >
+
+    <include
+        android:id="@+id/includetitle"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"        
+        android:layout_alignParentTop="true"
+        layout="@layout/mytitle" />
+
+    <ScrollView
+        android:layout_below="@+id/includetitle"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/rlbottom"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/includetitle"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/paddingbottom"
+            android:paddingLeft="@dimen/paddingleft"
+            android:paddingRight="@dimen/paddingright"
+            android:paddingTop="@dimen/paddingtop" >
+
+            <!-- <TextView -->
+            <!-- android:id="@+id/video_file" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_alignParentLeft="true" -->
+            <!-- android:text="@string/dest_name" -->
+            <!-- android:textAppearance="?android:attr/textAppearanceMedium" /> -->
+
+            <LinearLayout
+                android:id="@+id/optionbutton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/videofilebrowser"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_state_change"
+                    android:text="@string/videofilebrowser"
+                    android:textColor="#fff"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/audiofilebrowser"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_state_change"
+                    android:text="@string/audiofilebrowser"
+                    android:textColor="#fff"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/edit_extractvideo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/video_fileformat"
+                android:layout_below="@+id/optionbutton"
+                android:layout_marginTop="@dimen/paddingtop"
+                android:hint="Source file path" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/videofileformat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/video_fileformat"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="5dp"
+                android:text="@string/audiofileformat" />
+
+            <Spinner
+                android:id="@+id/video_fileformat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/destfilename1"
+                android:layout_marginTop="@dimen/paddingtop"
+                android:layout_toRightOf="@+id/videofileformat"
+                android:entries="@array/video_formatarray"
+                android:prompt="@string/string_title" />
+
+            <LinearLayout
+                android:id="@+id/destfilename1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_extractvideo"
+                android:layout_marginTop="@dimen/paddingtop"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/destfilename"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"                 
+                    android:layout_alignRight="@+id/video_fileformat"
+                    android:layout_below="@+id/edit_extractvideo"
+                    android:hint="Destination file name"
+                    android:singleLine="true"
+                    android:textSize="13sp" >
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/videofileformat"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/videobutton"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_state_change"
+                    android:text="Convert"
+                    android:textColor="#fff"
+                    android:textSize="13sp" />
+
+                <!-- <Button -->
+                <!-- android:id="@+id/cancel" -->
+                <!-- android:layout_width="0dip" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_marginRight="5dp" -->
+                <!-- android:layout_weight="1" -->
+                <!-- android:background="@drawable/button_state_change" -->
+                <!-- android:text="@string/cancel" -->
+                <!-- android:textColor="#fff" -->
+                <!-- android:textSize="13sp" /> -->
+
+
+                <!-- <Button -->
+                <!-- android:id="@+id/helpdialog" -->
+                <!-- android:layout_width="0dip" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_weight="1" -->
+                <!-- android:background="@drawable/button_state_change" -->
+                <!-- android:text="@string/helpbutton" -->
+                <!-- android:textColor="#fff" -->
+                <!-- android:textSize="13sp" /> -->
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/rlbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

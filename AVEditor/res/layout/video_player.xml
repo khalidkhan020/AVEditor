@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <VideoView
+        android:id="@+id/VideoView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="2dp" >
+
+        <Button
+            android:id="@+id/Start"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/button_state_change"
+            android:text="Start" />
+
+        <Button
+            android:id="@+id/Stop"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/button_state_change"
+            android:text="Stop" />
+
+        <Button
+            android:id="@+id/Reset"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/button_state_change"
+            android:text="Reset" />
+
+        <Button
+            android:id="@+id/Trim"
+            android:layout_width="0dip"
+            android:layout_weight="1"            
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_state_change"
+            android:text="Trim" />
+
+        <TextView
+            android:id="@+id/Details"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"   
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"   
+            android:layout_marginRight="5dp" 
+            android:padding="5dp"       
+            android:background="@drawable/button_state_change"            
+            android:textColor="#000" />
+    </LinearLayout>
+
+</merge>

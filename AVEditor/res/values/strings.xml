@@ -7,5 +7,159 @@
     <string name="action_example">Example action</string>
     <string name="action_share">Share</string>
      <string name="banner_ad_unit_id">ca-app-pub-7563654685686304/3841128673</string>
+  <string name="title_activity_main">Android Studio</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="edittext1">mnt/sdcard/</string>
+    <string name="edittext2">mnt/sdcard/</string>
+    <string name="action_help">Help</string>
+    <string name="extract_audio">Extract Audio</string>
+    <string name="alert">Alert</string>
+    <string name="videoalert">Please Select a Video</string>
+    <string name="Already_purchased">Already Purchased</string>
+    <string name="Error">Error</string>
+    <string name="later">Later</string>
+      <string name="Adsfree_version_purchased">Ads free version purchased.</string>
+    <string name="Failed_to_parse">Failed to parse purchase data.</string>
+    <string name="yes">Yes</string>
+    <string name="alert_title">Do you want to exit the Application?</string>
+    <string name="alertdialog"> Do you want to run this task in background? \n\n1.Tap YES to Run task in Background. \n\n3. Click NO to close the Dialog</string>
+    <string name="select">OK</string>
+    <string name="mergevideo">Merge Video of first file with the audio of second video file. \n\n1.Tap on "Select Video" to select the file from which you want the video. \n\n2.Tap on "Select Video 1" to select file from which you want the audio. \n\n3. Select the file format for merged file. \n\n4. Give a name to your merged file. \n\n5. Tap on "Merged Videos". </string>
+    <string name="selectfile">Please Select a Audio</string>
+    <string name="file_name">File Name</string>
+    <string name="string_title"> File Format</string>
+    <string name="extractimages">EXTRACT IMAGES</string>
+    <string name="upgrade">Upgrade to Premium</string>
+    <string name="cancel">Cancel</string>
+    <string name="Are_you_sure">Upgrade for premium features?</string>
+    <string name="start_time">Start Time</string>
+    <string name="numberofframe"> Number of images per second</string>
+    <string name="framesize">Frame size</string>
+    <string name="selectvid">Select Video</string>
+    <string name="selectvideo">Select Video</string>
+    <string name="selectaudio">Select Audio</string>
+    <string name="convert">Add Audio</string>
+    <string name="helpbutton">Help</string>
+    <string name="convertmsg">Steps to Convert audio or video file to different formats. \n\n1. Select Audio or Video File you want to Convert. \n\n2. Enter file name of the output file. \n\n3. Select file format in which you want to convert your selected media file.(Ex. Mp4 to Flv)</string>
+    <string name="frameformat">Frame format</string>
+    <string name="submit">OK</string>
+    <string name="extract">Extract</string>
+    <string name="close">CLOSE</string>
+    <string name="help">HELP</string>
+    <string name="helpmessage"> Steps to Extract Images \n\n1. First Select a video from which you want to extract images. \n\n2. Tap on Start Time button to select the time from where you want to extract images. \n\n3. Select file format of the extracted Images. \n\n4. Choose frame size of images. \n\n5. Select number of images you want to extract per second(1&#8211;10). \n\n6. Give a name to your extracted image sequence.  \n\n7. Finally select duration for extraction of Images(1&#8211;10).</string>
+    <string name="play">PLAY</string>
+    <string name="dest_name">Output file name</string>
+    <string name="destname">Destination file</string>
+    <string name="audiofileformat">File format</string>
+    <string name="trimvideo">TRIM VIDEO</string>
+    <string name="audiofilebrowser">Select Audio</string>
+    <string name="videofilebrowser">Select Video</string>
+    <string name="dont_show_again">Don\'t Show Again</string>
+    <string name="AdUnitId">a15347afdc87963</string>
+    <string name="audiohelp"> 1.Tap on Select Video to Select a video file. \n\n2. Give a name to output file. \n\n3. Select File Format of the output media file.</string>
 
+    <string-array name="audio_formatarray">
+        <item>.m4a</item>
+        <item>.mp3</item>    
+        <item>.avi</item>
+    </string-array>
+    <string-array name="some_audio_formatarray">
+        <item>.mp3</item>
+        <item>.avi</item>
+        <item>.wav</item>
+    </string-array>
+    <string-array name="some_more_formatarray">
+        <item>.wma</item>
+        <item>.mp3</item>
+        <item>.avi</item>
+    </string-array>
+    <string-array name="video_formatarray">
+        <item>.mp4</item>
+        <item>.mkv</item>
+        <item>.flv</item>
+    </string-array>
+    <string-array name="mp4_addaudio">
+        <item>.mp4</item>
+        <item>.mkv</item>
+        <item>.flv</item>
+    </string-array>
+    <string-array name="wmv_addaudio">
+        <item>.wmv</item>   
+    </string-array>
+    <string-array name="flv_addaudio">
+        <item>.flv</item>
+        <item>.mp4</item>
+    </string-array>
+    <string-array name="addaudio">
+        <item>.mp4</item>
+        <item>.mkv</item>
+    </string-array>
+    <string-array name="extractaudiodetails">
+        <item>.wav</item>
+        <item>.wma</item>
+        <item>.avi</item>
+    </string-array>
+    <string-array name="wav_convert_audio_details">
+        <item>.wma</item>
+        <item>.avi</item>
+    </string-array>
+    <string-array name="wma_convert_audio_details">
+        <item>.wav</item>
+        <item>.avi</item>
+    </string-array>
+    <string-array name="avi_convert_audio_details">
+        <item>.wav</item>
+        <item>.wma</item>
+    </string-array>
+    <string-array name="extractvideodetails">
+        <item>.mkv</item>
+        <item>.flv</item>
+        <item>.avi</item>
+        <item>.mp4</item>
+    </string-array>
+    <string-array name="mp4_extractvideodetails">
+        <item>.mkv</item>
+        <item>.flv</item>
+        <item>.avi</item>
+    </string-array>
+    <string-array name="wmv_extractvideodetails">
+        <item>.mp4</item>
+        <item>.mkv</item>
+        <item>.flv</item>
+        <item>.avi</item>
+    </string-array>
+    <string-array name="flv_extractvideodetails">
+        <item>.mp4</item>
+        <item>.mkv</item>
+        <item>.avi</item>
+    </string-array>
+
+    <!-- sqcif	128x96	qcif	176x144	cif	352x288 -->
+    <!-- 4cif	704x576	qqvga	160x120	qvga	320x240 -->
+    <!-- vga	640x480	svga	800x600	xga	1024x768 -->
+    <!-- uxga	1600x1200	qxga	2048x1536	sxga	1280x1024 -->
+    <!-- qsxga	2560x2048	hsxga	5120x4096	wvga	852x480 -->
+    <!-- wxga	1366x768	wsxga	1600x1024	wuxga	1920x1200 -->
+    <!-- woxga	2560x1600	wqsxga	3200x2048	wquxga	3840x2400 -->
+    <!-- whsxga	6400x4096	whuxga	7680x4800	cga	320x200 -->
+    <!-- hd480	852x480	hd720	1280x720	hd1080	1920x1080 -->
+
+    <string-array name="country_arrays">
+        <item>4cif-704*576</item>
+        <item>vga-640*480</item>
+        <item>sqcif-128*96</item>
+        <item>sxga-1280*1024</item>
+        <item>wvga-852*480</item>
+        <item>cga-320*200</item>
+        <item>xga-1024*768</item>
+        <item>qvga-320*240</item>
+    </string-array>
+    <string-array name="format_array">
+        <item>.jpeg</item>
+        <item>.png</item>
+        <item>.gif</item>
+        <item>.jpg</item>
+    </string-array>
+     
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name = "linearBackground" format = "color"></attr>
+    <attr name = "buttonState" format = "reference|color"></attr>
+    <attr name = "profileBar" format = "reference"></attr>
+    <attr name = "codeFont" format = "reference"></attr>
+    <attr name = "appicon" format="reference"></attr>    
+    
+</resources>

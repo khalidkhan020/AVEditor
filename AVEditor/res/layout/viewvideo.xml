@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="20dp"
+    android:background="?profileBar"
+    android:orientation="horizontal"
+    android:weightSum="1" >
+<!-- android:background="#0174DF" -->
+    <!-- <ImageView
+        android:id="@+id/headerleftimageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_launcher"
+         /> -->
+<!--     android:src="@drawable/ic_launcher" -->
+
+  <TextView
+        android:id="@+id/headerrighttextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="#fff"        
+        android:gravity="right"
+        android:paddingRight="4dp"
+        android:textSize="15sp"
+        android:textStyle="bold" />   
+
+<!--  		<Button -->
+<!--             android:id="@+id/Start" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:text="Start" /> -->
+
+<!--         <Button -->
+<!--             android:id="@+id/Stop" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:text="Stop" /> -->
+
+<!--         <Button -->
+<!--             android:id="@+id/Reset" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:text="Reset" /> -->
+
+<!--         <Button -->
+<!--             android:id="@+id/Trim" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:text="Trim" /> -->
+   
+
+</LinearLayout>

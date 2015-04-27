@@ -16,5 +16,78 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+ <style name="CodeFontBlue" parent="@style/Widget.AppCompat.Button">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>  
+        <item name="android:textColor">#CCCCCC</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">10dip</item>
+        <item name="android:paddingBottom">10dip</item>
+        <item name="android:layout_marginTop">10dip</item>
+        <item name="android:layout_marginLeft">5dip</item>
+        <item name="android:layout_marginRight">5dip</item>
+    </style>
 
+   
+
+  
+
+    <style name="button1">
+        <item name="android:textColor">#FF000000</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="application_theme" parent="android:style/Theme.NoTitleBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="codeFont">@style/CodeFontBlue</item>
+    </style>
+    <!-- First Profile Blue -->
+    <style name="Theme.MyTheme" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="actionBarStyle">@style/Widget.MyTheme.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.MyTheme.ActionBar</item>
+        <item name="linearBackground">#0174DF</item>
+        <item name="buttonState">@drawable/tab_bg_selector</item>
+        <item name="profileBar">@drawable/profile_bar</item>
+        <item name="codeFont">@style/CodeFontBlue</item>
+       
+    </style>
+
+    <style name="Widget.MyTheme.ActionBar"  parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">#0174DF</item>
+       <!--  <item name="background">#0174DF</item> -->
+        <item name="android:titleTextStyle">@style/Theme.MyAppTheme.ActionBar.TitleTextStyle</item>
+        <item name="titleTextStyle">@style/Theme.MyAppTheme.ActionBar.TitleTextStyle</item>
+    </style>
+
+    <style name="Theme.MyAppTheme.ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    
+    
+    
+    
+    <style name="ThemeSelector" parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarStyle">@style/myTheme.ActionBar</item>
+    </style>
+
+    <style name="myTheme.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:background">#0174DF</item>
+        <item name="android:titleTextStyle">@style/myTheme.ActionBar.Text</item>
+        <item name="android:height">50dp</item>
+    </style>
+
+    <style name="myTheme.ActionBar.Text" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    
+     <style name="dialogStyle" parent="@style/Base.Theme.AppCompat.Dialog">
+        <item name="android:background">#0174DF</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>        
+    </style> 
+    
 </resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+   <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="2">
+    
+       <Button
+        android:id="@+id/drag"
+        android:text="Seek to Start position"
+        android:background="#3c86cc"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/close"
+        android:text="Set Start Time"
+        android:layout_marginLeft="10dp"
+        android:background="#3c86cc"        
+		android:layout_weight="1"   
+		android:layout_marginRight="10dp" 
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+ 
+   
+    
+    </LinearLayout>
+
+    <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+</LinearLayout>

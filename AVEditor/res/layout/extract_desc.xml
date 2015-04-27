@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+     <include
+         android:id="@+id/includetemp"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            layout="@layout/mytitle" />
+
+    <RelativeLayout
+        android:id="@+id/extractlayout1"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/includetemp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlbottom"    
+        android:orientation="vertical"
+        tools:context=".ExtractDetails" >       
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:id="@+id/mainlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/paddingbottom"
+                android:paddingLeft="@dimen/paddingleft"
+                android:paddingRight="@dimen/paddingright"
+                android:paddingTop="@dimen/paddingtop" >
+
+                <LinearLayout
+                    android:id="@+id/linear3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/file_path"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight=".60"
+                        android:hint=" Source video file" />
+
+                    <Button
+                        android:id="@+id/browsebutton"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".40"
+                        android:background="@drawable/button_state_change"
+                        android:text="Select Video"
+                        android:textColor="#fff"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linear3"
+                    android:layout_marginTop="20dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/extract_file"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".40"
+                        android:text="@string/dest_name" />
+
+                    <EditText
+                        android:id="@+id/edit_extract"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".60"
+                        android:hint=""
+                        android:maxLength="25"
+                        android:singleLine="true" >
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linear1"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/audiofileformat"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight=".40"
+                        android:text="@string/audiofileformat" />
+
+                    <Spinner
+                        android:id="@+id/audio_fileformat"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".60"                       
+                        android:prompt="@string/string_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/okhelp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linear2"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/audiobutton"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_state_change"
+                        android:text="@string/extract_audio"
+                        android:textColor="#fff"
+                        android:textSize="15sp" />
+
+                    <!-- <Button -->
+                    <!-- android:id="@+id/helpbutton" -->
+                    <!-- android:layout_width="0dip" -->
+                    <!-- android:layout_height="wrap_content" -->
+                    <!-- android:layout_weight="1" -->
+                    <!-- android:background="?profileBar" -->
+                    <!-- android:text="@string/help" -->
+                    <!-- android:textColor="#fff" -->
+                    <!-- android:textSize="13sp" /> -->
+                </LinearLayout>
+
+                <!-- <Button -->
+                <!-- android:id="@+id/browsefolder" -->
+                <!-- android:layout_width="wrap_content" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_alignParentRight="true" -->
+                <!-- android:layout_below="@+id/browse" -->
+                <!-- android:text="Browse" /> -->
+
+
+                <!-- <EditText -->
+                <!-- android:id="@+id/folder_path" -->
+                <!-- android:layout_width="wrap_content" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_alignBaseline="@+id/browsefolder" -->
+                <!-- android:layout_alignBottom="@+id/browse" -->
+                <!-- android:layout_alignLeft="@+id/extract_file" -->
+                <!-- android:ems="9" -->
+                <!-- android:singleLine="true" /> -->
+
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rlbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>
