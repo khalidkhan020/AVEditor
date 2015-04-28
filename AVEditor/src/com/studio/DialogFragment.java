@@ -34,7 +34,7 @@ public class DialogFragment extends Activity
 {
 
 	final String				trimst				= Environment.getExternalStorageDirectory().getPath()
-															+ "/" + "Android_Studio/Trimmed_Videos";
+															+ "/" + "Android_Stud io/Trimmed_Videos";
 	private String				mFfmpegInstallPath;
 	AsyncTask<Void, Void, Void>	Mysynextractaudio	= null;
 
