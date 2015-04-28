@@ -6,12 +6,27 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    
     android:background="#cc9933"
     tools:context="com.appzone.aveditor.MainActivity$PlaceholderFragment" >
 
-    <TextView
-        android:id="@+id/section_label1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/trim_audio"
+        android:layout_width="190dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="55sp"
+        android:text="Trim Audio"
+        android:background="@drawable/button_state_change"
+        android:layout_height="190dp" />
+     <Button
+        android:id="@+id/trim_video"
+        android:layout_marginTop="20dp"
+        android:layout_width="190dp"
+        android:layout_below="@+id/trim_audio"
+        android:layout_centerHorizontal="true"
+        android:textSize="55sp"
+        android:text="Trim Video"
+        android:background="@drawable/button_state_change"
+        android:layout_height="190dp" />
 
 </RelativeLayout>

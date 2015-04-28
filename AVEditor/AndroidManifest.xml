@@ -57,7 +57,7 @@
         <activity android:name="com.studio.DialogFragment" >
         </activity>
         <activity
-            android:name="com.studio.ImageDetails"
+            android:name="com.appzone.aveditor.fragements.ExtractImages"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
@@ -72,7 +72,7 @@
             android:name="com.studio.utils.ViewVideo"
             android:screenOrientation="landscape" />
         <activity
-            android:name="com.studio.ExtractDetails"
+            android:name="com.appzone.aveditor.fragements.ExtractAV"
             android:configChanges="keyboardHidden|orientation|screenSize" >
         </activity>
         <activity

@@ -16,7 +16,7 @@
     <TextView  xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/title"
         android:textColor="@color/leftcolor"
-         android:background="@drawable/setting"
+         android:background="@drawable/sltr_nav_item_bg"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center_vertical"

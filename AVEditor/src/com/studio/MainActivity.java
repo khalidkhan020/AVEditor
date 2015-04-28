@@ -87,8 +87,7 @@ public class MainActivity extends ActionBarActivity implements
 																		.getPath() + "/" + "Android_Studio/View_Converted_files/";
 	final String				merged							= Environment.getExternalStorageDirectory().getPath()
 																		+ "/" + "Android_Studio/View_Merged_Videos/";
-	final String				extract							= Environment.getExternalStorageDirectory().getPath()
-																		+ "/" + "Android_Studio/View_Extracted_Files/";
+	
 
 	AsyncTask<Void, Void, Void>	Mysyn							= null;
 	AsyncTask<Void, Void, Void>	Mysynconvert					= null;
@@ -124,7 +123,7 @@ public class MainActivity extends ActionBarActivity implements
 	ListAdapter					adapter;
 	ListAdapter					adapter1;
 	int							flag1							= 1;
-	String						trimfile;
+
 	File						trimmedDir;
 	File						imagedir;
 
@@ -139,10 +138,10 @@ public class MainActivity extends ActionBarActivity implements
 	private EditText			mInputFilepath;
 	private EditText			destfile;
 	private EditText			mOutputFilename;
-	private LinearLayout		extractImages;
+	
 	private String				mFfmpegInstallPath;
 	private String				mYoutubeInstallPath;
-	private LinearLayout		extractAudio;
+	
 	private LinearLayout		convertfile;
 	private LinearLayout		extractVideo;
 	private LinearLayout		mStartButton5;
@@ -158,7 +157,7 @@ public class MainActivity extends ActionBarActivity implements
 	private LinearLayout		trimvideos;
 	private LinearLayout		addaudio;
 
-	final int					GALLERY_KITKAT_INTENT_CALLED	= 101;
+	
 
 	public Boolean checkforpremim()
 	{
@@ -176,37 +175,7 @@ public class MainActivity extends ActionBarActivity implements
 	{
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.newxml);
-		cacheDestroy();
-		bindService(new Intent(
-				"com.android.vending.billing.InAppBillingService.BIND"),
-				mServiceConn, Context.BIND_AUTO_CREATE);
-
-		if (videopreferences.getInstance(this).isPurchased())
-		{
-			LinearLayout ad_view = (LinearLayout) findViewById(R.id.rlbottom);
-			ad_view.setVisibility(View.GONE);
-		}
-
-		videopreferences.getInstance(MainActivity.this).sethelpintialcounter();
-
-		Appirater.appLaunched(this);
-		// this.setTheme(R.style.Theme_MyTheme);
-		bar = getSupportActionBar();
-		// bar.setBackgroundDrawable(new ColorDrawable(Color.rgb(1, 116, 223)));
-		bar.setTitle(getResources().getString(R.string.app_name));
-		bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
-				| ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_TITLE);
-		bar.setIcon(R.drawable.appicon);
-		bar.setDisplayShowHomeEnabled(true);
-		bar.setDisplayShowTitleEnabled(true);
-		// bar.setDisplayHomeAsUpEnabled(true);
-		bar.show();
-
-		// CreateAdView.getInstance(this);
-		// requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-		// getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
-		// R.layout.mytitle);
+		setContentView(R.layout.newxml);		
 		File makeDirectory = new File(Environment.getExternalStorageDirectory()
 				.getAbsolutePath() + "/" + "Android_Studio");
 		trimmedDir = new File(Environment.getExternalStorageDirectory()
@@ -221,32 +190,20 @@ public class MainActivity extends ActionBarActivity implements
 				.getAbsolutePath()
 				+ "/"
 				+ "Android_Studio/View_Converted_files");
-		File extract = new File(Environment.getExternalStorageDirectory()
-				.getAbsolutePath()
-				+ "/"
-				+ "Android_Studio/View_Extracted_Files");
+		
 
 		makeDirectory.mkdirs();
 		trimmedDir.mkdirs();
-		imagedir.mkdirs();
-		extract.mkdirs();
+		imagedir.mkdirs();		
 		converted.mkdirs();
 		merged.mkdirs();
 		findViews();
 
-		installFfmpeg();
-		// installYoutube();
-		// header.setText("Android Studioz");
 		trimaudio.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-
-				// if ((videopreferences.getInstance(MainActivity.this))
-				// .getcounter() > 10) {
-				// showEmailDialog(MainActivity.this);
-				// }
 
 				if (checkforpremim())
 				{
@@ -254,10 +211,7 @@ public class MainActivity extends ActionBarActivity implements
 				}
 				else if (counter < 1)
 				{
-					Intent intent = new Intent(MainActivity.this,
-							DialogFragment.class);
-					intent.putExtra("ffmpegpath", mFfmpegInstallPath);
-					startActivity(intent);
+					
 
 				}
 				else
@@ -330,23 +284,7 @@ public class MainActivity extends ActionBarActivity implements
 				}
 				else if (counter < 3)
 				{
-					if (Build.VERSION.SDK_INT < 19)
-					{
-						Intent intent = new Intent();
-						intent.setType("video/*");
-						intent.setAction(Intent.ACTION_GET_CONTENT);
-						startActivityForResult(
-								Intent.createChooser(intent, "Select Video"), 1);
-					}
-					else
-					{
-						Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-						intent.addCategory(Intent.CATEGORY_OPENABLE);
-						intent.setType("video/*");
-						startActivityForResult(intent,
-								GALLERY_KITKAT_INTENT_CALLED);
-
-					}
+					
 				}
 				else
 				{
@@ -420,24 +358,13 @@ public class MainActivity extends ActionBarActivity implements
 		// }
 		// });
 
-		extractImages.setOnClickListener(this);
+		
 		extractAudio.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
 
-				// if (videopreferences.getInstance(MainActivity.this)
-				// .getcounter() > 0) {
-				// showEmailDialog(MainActivity.this);
-				// }
-
-				if (checkforpremim())
-				{
-					showEmailDialog(MainActivity.this, 4);
-				}
-				else if (counter < 3)
-				{
 					Intent intent = new Intent(MainActivity.this,
 							ExtractDetails.class);
 					intent.putExtra("extractor", 1);
@@ -453,12 +380,6 @@ public class MainActivity extends ActionBarActivity implements
 					{
 						startActivityForResult(intent, 3);
 					}
-
-				}
-				else
-				{
-					showprefdialog();
-				}
 
 			}
 		});
@@ -739,135 +660,8 @@ public class MainActivity extends ActionBarActivity implements
 		 * });
 		 */}
 
-	protected void cacheDestroy()
-	{
-
-		try
-		{
-			trimCache(MainActivity.this);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-
-	}
-
-	public void trimCache(Context context)
-	{
-		try
-		{
-			File dir = context.getCacheDir();
-			if (dir != null && dir.isDirectory())
-			{
-				deleteDir(dir);
-			}
-		}
-		catch (Exception e)
-		{
-			System.out.println("print error");
-		}
-	}
-
-	public boolean deleteDir(File dir)
-	{
-		if (dir != null && dir.isDirectory())
-		{
-			String[] children = dir.list();
-			for (int i = 0; i < children.length; i++)
-			{
-				boolean success = deleteDir(new File(dir, children[i]));
-				if (!success) { return false; }
-			}
-		}
-		// The directory is now empty so delete it
-		return dir.delete();
-	}
-
-	@Override
-	protected void onDestroy()
-	{
-		super.onDestroy();
-		cacheDestroy();
-		System.out.println("onn destroyed called");
-		if (mService != null)
-		{
-			this.unbindService(mServiceConn);
-		}
-		// videopreferences.getInstance(MainActivity.this).setinitialcounter();
-		counter = 0;
-		// if (MyNM != null) {
-		// MyNM.cancel(42);
-		// }
-
-		videopreferences.getInstance(MainActivity.this).startstring();
-	};
-
-	//
-	// @Override
-	// protected void onSaveInstanceState(Bundle state) {
-	// // dismissDialog(DIALOG_LOAD_FILE);
-	// // dismissDialog(DIALOG_LOAD_FOLDER);
-	// // fileList=null;
-	// super.onSaveInstanceState(state);
-	// }
-
-	@Override
-	protected void onResume()
-	{
-
-		loadFileList();
-		if (DIALOG_CONSTANT != 1)
-		{
-			removeDialog(DIALOG_LOAD_FILE);
-		}
-
-		super.onResume();
-		CreateAdView.getInstance().setSinglaotonAdview(this);
-	}
-
 	@SuppressLint("NewApi")
-	private String getRealPathFromURI(Uri contentURI)
-	{
-		Cursor cursor = null;
-		if (Build.VERSION.SDK_INT < 19)
-		{
-			cursor = getContentResolver().query(contentURI, null, null, null,
-					null);
-		}
-		else
-		{
-			// Will return "image:x*"
-			String wholeID = DocumentsContract.getDocumentId(contentURI);
-
-			// Split at colon, use second item in the array
-			String id = wholeID.split(":")[1];
-
-			String[] column = {
-				MediaStore.Video.VideoColumns.DATA
-			};
-
-			// where id is equal to
-			String sel = MediaStore.Video.VideoColumns._ID + "=?";
-			cursor = getContentResolver().query(
-					MediaStore.Video.Media.EXTERNAL_CONTENT_URI, column, sel,
-					new String[] {
-						id
-					}, null);
-		}
-
-		if (cursor == null)
-		{ // Source is Dropbox or other similar local file//
-			// path
-			return contentURI.getPath();
-		}
-		else
-		{
-			cursor.moveToFirst();
-			int idx = cursor.getColumnIndex(MediaStore.Video.VideoColumns.DATA);
-			return cursor.getString(idx);
-		}
-	}
+	
 
 	private void loadFileList()
 	{
@@ -1352,67 +1146,7 @@ public class MainActivity extends ActionBarActivity implements
 
 	}
 
-	public void alertOnCompletion(String filename, String fileformat,
-			final int type)
-	{
-		final String audfilename = filename;
-		final String audfileformat = fileformat;
-
-		AlertDialog alertDialog = null;
-		AlertDialog.Builder alertBuilder = new Builder(MainActivity.this);
-
-		alertBuilder
-				.setTitle("Success!!")
-				.setMessage(
-						"File Save To /sdcard/Android_Studio/View_Extracted_files Folder. Do you Want to Play this File?")
-				.setCancelable(false)
-				.setPositiveButton("PLAY",
-						new DialogInterface.OnClickListener()
-						{
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which)
-							{
-
-								if (type == 1)
-								{
-									Intent intent = new Intent();
-									intent.setAction(android.content.Intent.ACTION_VIEW);
-									File file = new File(extract + "/"
-											+ audfilename + audfileformat);
-									intent.setDataAndType(Uri.fromFile(file),
-											"audio/*");
-									startActivity(intent);
-								}
-								else if (type == 2)
-								{
-									Intent intent = new Intent();
-									intent.setAction(android.content.Intent.ACTION_VIEW);
-									File file = new File(extract + "/"
-											+ audfilename + audfileformat);
-									intent.setDataAndType(Uri.fromFile(file),
-											"video/*");
-									startActivity(intent);
-								}
-
-							}
-						})
-				.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener()
-						{
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which)
-							{
-								// TODO Auto-generated
-								// method stub
-								dialog.dismiss();
-							}
-						});
-		alertDialog = alertBuilder.create();
-		alertDialog.show();
-	}
-
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -1602,150 +1336,7 @@ public class MainActivity extends ActionBarActivity implements
 			}
 		}
 
-		if (requestCode == 10)
-		{
-			if (data != null)
-			{
-				final String destfilename = data.getExtras().getString(
-						"outputFileName");
-				String trimfilename = data.getExtras().getString(
-						"inputFileName");
-				// String start = data.getExtras().getString("start");
-				int start = data.getIntExtra("start", 0);
-				int duration = data.getIntExtra("duration", 1);
-
-				// String duration = data.getExtras().getString("duration");
-				final FfmpegJob job = new FfmpegJob(mFfmpegInstallPath,
-						trimfilename, destfilename, start, duration);
-				// loadJob(job);
-				final ProgressDialog progressDialog = ProgressDialog
-						.show(MainActivity.this,
-								"Video Trimming",
-								"Please wait itmay take some time depending on file size",
-								true);
-
-				new AsyncTask<Void, Void, Void>()
-				{
-					String	task	= "Trimming video is in progress";
-
-					@Override
-					protected void onPreExecute()
-					{
-
-						videopreferences.getInstance(MainActivity.this)
-								.appendstring(task);
-						videopreferences.getInstance(MainActivity.this)
-								.increasecounter();
-						counter = counter + 1;
-						progressDialog.setOnKeyListener(new OnKeyListener()
-						{
-							@Override
-							public boolean onKey(DialogInterface dialog,
-									int keyCode, KeyEvent event)
-							{
-
-								if ((keyCode == KeyEvent.KEYCODE_BACK))
-								{
-									if (event.getAction() != KeyEvent.ACTION_DOWN)
-									{
-										showalert(progressDialog);
-									}
-									return true;
-								}
-								else
-								{
-									return false;
-								}
-							}
-						});
-					}
-
-					@Override
-					protected Void doInBackground(Void... arg0)
-					{
-						try
-						{
-							job.trimvideos().run();
-						}
-						catch (Exception e)
-						{
-
-							videopreferences.getInstance(MainActivity.this)
-									.setdecrementcounter();
-							counter = counter - 1;
-							videopreferences.getInstance(MainActivity.this)
-									.updatestring(task);
-						}
-
-						return null;
-					}
-
-					@Override
-					protected void onProgressUpdate(Void... values)
-					{
-
-						super.onProgressUpdate(values);
-					}
-
-					@Override
-					protected void onPostExecute(Void result)
-					{
-						progressDialog.dismiss();
-						// videopreferences.getInstance(MainActivity.this)
-						// .setdecrementcounter();
-						counter = counter - 1;
-						videopreferences.getInstance(MainActivity.this)
-								.updatestring(task);
-						Toast.makeText(MainActivity.this,
-								" Video trimmed Successfully ",
-								Toast.LENGTH_SHORT).show();
-						AlertDialog alertDialog = null;
-						AlertDialog.Builder alertBuilder = new Builder(
-								MainActivity.this);
-
-						alertBuilder
-								.setTitle("Success!!")
-								.setMessage(
-										"File Save To /sdcard/Android_Studio/View_Trimmed_files Folder. Want to Play Song")
-								.setCancelable(false)
-								.setPositiveButton("PLAY",
-										new DialogInterface.OnClickListener()
-										{
-											@Override
-											public void onClick(
-													DialogInterface dialog,
-													int which)
-											{
-
-												Intent intent = new Intent();
-												intent.setAction(android.content.Intent.ACTION_VIEW);
-												File file = new File(trimst
-														+ "/" + destfilename);
-												intent.setDataAndType(
-														Uri.fromFile(file),
-														"video/*");
-												startActivity(intent);
-											}
-										})
-								.setNegativeButton("Cancel",
-										new DialogInterface.OnClickListener()
-										{
-											@Override
-											public void onClick(
-													DialogInterface dialog,
-													int which)
-											{
-												dialog.dismiss();
-											}
-										});
-						alertDialog = alertBuilder.create();
-						alertDialog.show();
-					}
-
-				}.execute();
-
-			}
-		}
+		
 
 		if (requestCode == 9)
 		{
@@ -1894,332 +1485,9 @@ public class MainActivity extends ActionBarActivity implements
 
 			}
 		}
-		Uri pathToImage = null;
-		if (requestCode == 1)
-		{
-			if (data != null)
-			{
-				pathToImage = data.getData();
-				trimfile = getRealPathFromURI(pathToImage);
-				Log.d("", "" + str);
-				Intent trimintent = new Intent(MainActivity.this,
-						ViewVideo.class);
-				trimintent.putExtra("trimfile", trimfile);
-				startActivityForResult(trimintent, 10);
-			}
-		}
+		
 
-		if (requestCode == GALLERY_KITKAT_INTENT_CALLED)
-		{
-			if (data != null)
-			{
-				pathToImage = data.getData();
-				final int takeFlags = data.getFlags()
-						& (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-				// Check for the freshest data.
-				getContentResolver().takePersistableUriPermission(pathToImage,
-						takeFlags);
-				trimfile = getRealPathFromURI(pathToImage);
-				Log.d("", "" + str);
-				Intent trimintent = new Intent(MainActivity.this,
-						ViewVideo.class);
-				trimintent.putExtra("trimfile", trimfile);
-				startActivityForResult(trimintent, 10);
-			}
-		}
-
-		if (requestCode == 2)
-		{}
-
-		if (requestCode == 3)
-		{
-			if (data != null)
-			{
-
-				final String filename = data.getExtras().getString(
-						"audiofilename");
-				final String fileformat = data.getExtras().getString(
-						"audioformat");
-				String file_path = data.getExtras().getString("file_path");
-
-				final FfmpegJob job = new FfmpegJob(mFfmpegInstallPath,
-						filename, fileformat, file_path);
-				// loadJob(job);
-
-				progressDialog = ProgressDialog
-						.show(this,
-								"Extracting Audio",
-								"Please wait it may take some time depending on file size",
-								true, false);
-
-				Mysyn = new AsyncTask<Void, Void, Void>()
-				{
-					String	task	= "Extracting audio is in progress";
-
-					@Override
-					protected void onCancelled()
-					{
-
-						super.onCancelled();
-						progressDialog.dismiss();
-						// MyNM = null;
-						videopreferences.getInstance(MainActivity.this)
-								.updatestring(task);
-						videopreferences.getInstance(MainActivity.this)
-								.setdecrementcounter();
-
-					}
-
-					@Override
-					protected void onProgressUpdate(Void... values)
-					{
-						super.onProgressUpdate(values);
-					}
-
-					@Override
-					protected Void doInBackground(Void... arg0)
-					{
-						try
-						{
-							job.create2().run();
-						}
-						catch (Exception e)
-						{
-							videopreferences.getInstance(MainActivity.this)
-									.setdecrementcounter();
-							counter = counter - 1;
-							videopreferences.getInstance(MainActivity.this)
-									.updatestring(task);
-						}
-
-						return null;
-					}
-
-					@Override
-					protected void onPostExecute(Void result)
-					{
-						if (fileformat.equalsIgnoreCase(".mp3"))
-						{
-							// if (progressDialog.isShowing())
-							// progressDialog.setProgress(50);
-							new LoadChannelsCategory(filename, fileformat)
-									.execute();
-
-						}
-						else
-						{
-							System.out.println("Will not come here????");
-							// progressDialog.setProgress(100);
-							videopreferences.getInstance(MainActivity.this)
-									.updatestring(task);
-							// videopreferences.getInstance(MainActivity.this)
-							// .setdecrementcounter();
-							counter = counter - 1;
-							// progressDialog.setIndeterminate(false);
-							progressDialog.dismiss();
-							alertOnCompletion(filename, fileformat, 1);
-							// MyNM.cancel(42);
-							Mysyn.cancel(isFinishing());
-							Mysyn = null;
-							// header.setText("");
-							// Toast.makeText(MainActivity.this,
-							// "File Save to /sdcard/Android_Studio",
-							// Toast.LENGTH_LONG).show();
-						}
-
-					}
-
-					@Override
-					protected void onPreExecute()
-					{
-						super.onPreExecute();
-						videopreferences.getInstance(MainActivity.this)
-								.appendstring(task);
-						videopreferences.getInstance(MainActivity.this)
-								.increasecounter();
-						counter = counter + 1;
-						// header.setText("Extracting audio in progress");
-						// progressDialog = new
-						// ProgressDialog(MainActivity.this);
-						// progressDialog.setTitle("Converting");
-						// progressDialog
-						// .setMessage("Conversion is in progress ... It may take some time depending on your video file size.");
-						// progressDialog
-						// .setProgressStyle(progressDialog.STYLE_HORIZONTAL);
-						// progressDialog.setProgress(0);
-						// progressDialog.setIndeterminate(true);
-						// progressDialog.setCancelable(false);
-						progressDialog.setOnKeyListener(new OnKeyListener()
-						{
-							@Override
-							public boolean onKey(DialogInterface arg0,
-									int arg1, KeyEvent arg2)
-							{
-								if ((arg1 == KeyEvent.KEYCODE_BACK))
-								{
-									if (arg2.getAction() != KeyEvent.ACTION_DOWN)
-									{
-										showalert(progressDialog);
-									}
-									return true;
-								}
-								else
-								{
-									return false;
-								}
-								// TODO Auto-generated method stub
-							}
-
-						});
-
-						// MyNM = (NotificationManager)
-						// getSystemService(Context.NOTIFICATION_SERVICE);
-						//
-						// Intent intent = new Intent(MainActivity.this,
-						// MainActivity.class);
-						// final PendingIntent pendingIntent = PendingIntent
-						// .getActivity(getApplicationContext(), 0,
-						// intent, 0);
-						//
-						// Notification notification = new Notification(
-						// R.drawable.ic_launcher, "Converting...",
-						// System.currentTimeMillis());
-						// notification.flags = notification.flags
-						// | Notification.FLAG_ONGOING_EVENT;
-						// notification.contentView = new RemoteViews(
-						// getApplicationContext().getPackageName(),
-						// R.layout.notification);
-						// notification.contentIntent = pendingIntent;
-						// notification.contentView.setImageViewResource(
-						// R.id.imageicon, R.drawable.appicon);
-						// notification.contentView.setTextViewText(
-						// R.id.notification, "Converting...");
-						// notification.contentView.setProgressBar(
-						// R.id.progressbar, 0, 0, true);
-						// NotificationManager notificationManager =
-						// (NotificationManager) getApplicationContext()
-						// .getSystemService(
-						// getApplicationContext().NOTIFICATION_SERVICE);
-						// notificationManager.notify(42, notification);
-						// progressDialog.setMax(100);
-						// progressDialog.show();
-					}
-
-				}.execute();
-			}
-
-		}
-
-		if (requestCode == 4)
-		{
-			if (data != null)
-			{
-
-				final String filename = data.getExtras().getString(
-						"audiofilename");
-				final String fileformat = data.getExtras().getString(
-						"audioformat");
-				String file_path = data.getExtras().getString("file_path");
-
-				final FfmpegJob job = new FfmpegJob(mFfmpegInstallPath,
-						filename, fileformat, file_path);
-				// loadJob(job);
-				final ProgressDialog progressDialog = ProgressDialog
-						.show(this,
-								"Extracting Video",
-								"Please wait. It may take some time depending on file size",
-								true);
-
-				Mysynextract = new AsyncTask<Void, Void, Void>()
-				{
-					String	task	= "Extracting video is in progress";
-
-					@Override
-					protected void onCancelled()
-					{
-
-						super.onCancelled();
-						progressDialog.dismiss();
-						videopreferences.getInstance(MainActivity.this)
-								.updatestring(task);
-						videopreferences.getInstance(MainActivity.this)
-								.setdecrementcounter();
-
-					}
-
-					@Override
-					protected void onPreExecute()
-					{
-
-						videopreferences.getInstance(MainActivity.this)
-								.appendstring(task);
-						videopreferences.getInstance(MainActivity.this)
-								.increasecounter();
-						counter = counter + 1;
-						progressDialog.setOnKeyListener(new OnKeyListener()
-						{
-
-							@Override
-							public boolean onKey(DialogInterface dialog,
-									int keyCode, KeyEvent event)
-							{
-
-								if ((keyCode == KeyEvent.KEYCODE_BACK))
-								{
-									if (event.getAction() != KeyEvent.ACTION_DOWN)
-									{
-										showalert(progressDialog);
-									}
-									return true;
-								}
-								else
-								{
-									return false;
-								}
-							}
-						});
-					}
-
-					@Override
-					protected Void doInBackground(Void... arg0)
-					{
-						try
-						{
-							job.create4().run();
-						}
-						catch (Exception e)
-						{
-							videopreferences.getInstance(MainActivity.this)
-									.setdecrementcounter();
-							counter = counter - 1;
-							Mysynextract = null;
-							videopreferences.getInstance(MainActivity.this)
-									.updatestring(task);
-						}
-
-						return null;
-					}
-
-					@Override
-					protected void onPostExecute(Void result)
-					{
-						progressDialog.dismiss();
-						videopreferences.getInstance(MainActivity.this)
-								.updatestring(task);
-						// videopreferences.getInstance(MainActivity.this)
-						// .setdecrementcounter();
-						counter = counter - 1;
-						Mysynextract = null;
-						Toast.makeText(MainActivity.this,
-								"Extraction of video is Complete",
-								Toast.LENGTH_SHORT).show();
-						alertOnCompletion(filename, fileformat, 2);
-					}
-
-				}.execute();
-
-			}
-		}
+		
 
 		if (requestCode == 5)
 		{
@@ -2598,98 +1866,7 @@ public class MainActivity extends ActionBarActivity implements
 
 	}
 
-	public class LoadChannelsCategory extends AsyncTask<Void, Void, String>
-	{
-
-		int		flag	= 0;
-		String	res;
-		String	filename;
-		String	fileformat;
-		String	task	= "Extracting audio is in progress";
-
-		public LoadChannelsCategory(String filename, String fileformat)
-		{
-			this.filename = filename;
-			this.fileformat = fileformat;
-		}
-
-		// final ProgressDialog progressDialog = ProgressDialog
-		// .show(MainActivity.this,
-		// "Extracting Audio",
-		// "Please wait it may take some time depending on file size",
-		// true, false);
-		@Override
-		protected void onPreExecute()
-		{
-
-		}
-
-		@Override
-		protected String doInBackground(Void... params)
-		{
-
-			try
-			{
-				// String str = createMP3File();
-				String str = "";
-				try
-				{
-					str = createMP3File(extract + "/"
-							+ com.studio.Constants.WAVE_FILE, extract + "/"
-							+ filename + ".mp3");
-
-					if (str.equalsIgnoreCase("true"))
-					{
-						File wavFile = new File(extract + "/"
-								+ com.studio.Constants.WAVE_FILE);
-						wavFile.delete();
-					}
-				}
-				catch (Exception e)
-				{
-
-					Log.d("Exception", e.toString());
-				}
-				Log.d("Sysout", str);
-
-			}
-			catch (Exception e)
-			{
-				Log.d("", "" + e);
-			}
-			return "";
-		}
-
-		public void onPostExecute(String result)
-		{
-
-			try
-			{
-				if (progressDialog.isShowing())
-				{
-					progressDialog.dismiss();
-					videopreferences.getInstance(MainActivity.this)
-							.updatestring(task);
-					counter = counter - 1;
-					Toast.makeText(
-							MainActivity.this,
-							"File Save to Android_Studio/View_Extracted_Files Folder",
-							Toast.LENGTH_LONG).show();
-					alertOnCompletion(filename, fileformat, 1);
-					// MyNM.cancel(42);
-					Mysyn.cancel(isFinishing());
-					Mysyn = null;
-
-				}
-
-			}
-			catch (Exception e)
-			{
-				System.out.println(e);
-			}
-		}
-	}
-
+	
 	private void showalert()
 	{
 

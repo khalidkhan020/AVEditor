@@ -2,16 +2,19 @@
 <resources>
 
     <string-array name="left_drawer_item">
-        <item>Video</item>
-        <item>Audio</item>
-        <item>Image</item>
+        <item>Extract Video</item>
+        <item>Extract Audio</item>
+        <item>Extract Images</item>
+        <item>Trim Video/Audio</item>
+        <item>Convert Video/Audio</item>
+        <item>Mearg Video</item>
         <item>Chroma Detection</item>
         <item>Effects</item>
         <item>Secure Vault</item>
         <item>Premium Service</item>
         <item>Credits</item>
         <item>Setting</item>
-        <item>Help</item>
+        <item>FAQ</item>
         <item>About</item>
     </string-array>
 

@@ -3,22 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-    
-     <include
-         android:id="@+id/includetemp"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:layout_alignParentTop="true"
-            layout="@layout/mytitle" />
 
     <RelativeLayout
         android:id="@+id/extractlayout1"
         android:layout_width="match_parent"
-        android:layout_below="@+id/includetemp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rlbottom"    
+        android:layout_above="@+id/rlbottom"
+        android:layout_below="@+id/includetemp"
         android:orientation="vertical"
-        tools:context=".ExtractDetails" >       
+        tools:context=".ExtractAV" >
 
         <ScrollView
             android:layout_width="match_parent"
@@ -108,7 +101,7 @@
                         android:id="@+id/audio_fileformat"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".60"                       
+                        android:layout_weight=".60"
                         android:prompt="@string/string_title" />
                 </LinearLayout>
 

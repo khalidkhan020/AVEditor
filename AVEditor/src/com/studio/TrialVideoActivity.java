@@ -13,6 +13,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.appzone.aveditor.R;
+import com.appzone.aveditor.fragements.ExtractImages;
 
 public class TrialVideoActivity extends Activity {
 
@@ -63,7 +64,7 @@ public class TrialVideoActivity extends Activity {
 				if (vd != null) {
 					a = vd.getCurrentPosition();
 					Intent intent = new Intent(TrialVideoActivity.this,
-							ImageDetails.class);
+							ExtractImages.class);
 					intent.putExtra("time", a);
 					setResult(2, intent);
 					finish();

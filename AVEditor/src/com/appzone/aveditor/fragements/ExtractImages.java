@@ -1,4 +1,4 @@
-package com.studio;
+package com.appzone.aveditor.fragements;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -39,11 +39,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appzone.aveditor.R;
+import com.studio.TrialVideoActivity;
 import com.studio.utils.CreateAdView;
 import com.studio.utils.IMedia;
 import com.studio.utils.videopreferences;
 
-public class ImageDetails extends Fragment implements
+public class ExtractImages extends Fragment implements
 		View.OnClickListener, OnValueChangeListener
 {
 
@@ -60,7 +61,7 @@ public class ImageDetails extends Fragment implements
 	private Button		sub;
 	private EditText	filename;
 	private TextView	file_path;
-	private TextView	header;
+
 	private TextView	display;
 	private Button		browse;
 	int					counter							= 1;
@@ -166,18 +167,13 @@ public class ImageDetails extends Fragment implements
 		starttime = (Button) v.findViewById(R.id.start_button);
 		frame_rate = (EditText) v.findViewById(R.id.editText2);
 		duration = (EditText) v.findViewById(R.id.editText3);
-		header = (TextView) v.findViewById(R.id.headerrighttextview);
+
 		browse = (Button) v.findViewById(R.id.selectvideo);
 		filename = (EditText) v.findViewById(R.id.dest_name);
 		frame_rate.setFocusable(false);
 		duration.setFocusable(false);
 		start_time.setFocusable(false);
 		starttime.setFocusable(false);
-		header.setText("Extract Images");
-		if (videopreferences.getInstance(getActivity()).getimagecounter() == 0)
-		{
-			showalert();
-		}
 
 		frame_rate.setOnClickListener(new OnClickListener()
 		{
@@ -257,7 +253,7 @@ public class ImageDetails extends Fragment implements
 			// }
 		});
 
-		duration.setOnClickListener(this);
+		// duration.setOnClickListener(this);
 
 		browse.setOnClickListener(new OnClickListener()
 		{
@@ -388,7 +384,7 @@ public class ImageDetails extends Fragment implements
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
 	{
 		MenuItem menuItem = menu.add("Help");
-		menuItem.setIcon(R.drawable.help).setShowAsAction(
+		menuItem.setIcon(R.drawable.ic_action_help).setShowAsAction(
 				menuItem.SHOW_AS_ACTION_ALWAYS);
 		menuItem.setOnMenuItemClickListener(new OnMenuItemClickListener()
 		{
@@ -470,7 +466,7 @@ public class ImageDetails extends Fragment implements
 					-(width - width / 4), 0, 0);
 			anim.setDuration(8000);
 			anim.setRepeatCount(Animation.INFINITE);
-			header.setAnimation(anim);
+
 		}
 		catch (Exception e)
 		{
@@ -614,9 +610,9 @@ public class ImageDetails extends Fragment implements
 						{
 							if (!(start_time.getText().toString()).equals(""))
 							{
-								IMedia iMedia=(IMedia) getActivity();
-								if (iMedia!=null)
-									
+								IMedia iMedia = (IMedia) getActivity();
+								if (iMedia != null)
+
 								{
 									iMedia.extracrImages(intent.getExtras());
 								}

@@ -111,31 +111,31 @@ public class NavigationDrawerFragment extends Fragment
 		switch (posi)
 		{
 		case 0:
-			return R.drawable.ic_video;
+			return R.drawable.sltr_extract_video;
 			
 		case 1:
-			return R.drawable.ic_audio;
+			return R.drawable.sltr_extract_audio;
 		case 2:
-			return R.drawable.ic_image;
+			return R.drawable.sltr_extract_images;
 		case 3:
-			return R.drawable.ic_chroma_detection;
+			return R.drawable.sltr_trim_video;
 			
 		case 4:
-			return R.drawable.ic_effect;
+			return R.drawable.sltr_extract_images;
 		case 5:
-			return R.drawable.ic_secure_vault;
+			return R.drawable.sltr_extract_images;
 		case 6:
-			return R.drawable.ic_premium_services;
+			return R.drawable.sltr_extract_images;
 			
 		case 7:
-			return R.drawable.ic_credit;
+			return R.drawable.sltr_extract_images;
 		case 8:
-			return R.drawable.ic_setting;
+			return R.drawable.sltr_extract_images;
 		case 9:
-			return R.drawable.ic_help;
+			return R.drawable.sltr_extract_images;
 			
 		case 10:
-			return R.drawable.ic_about;
+			return R.drawable.sltr_extract_images;
 		
 		default:
 			return 0;
